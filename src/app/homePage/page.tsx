@@ -1,8 +1,25 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import Head from 'next/head'
 import './HomePage.css'
+import { useRouter } from 'next/navigation';
 
 const HomePage = () => {
+  const router = useRouter();
+  const isLoggedIn = localStorage.getItem("isLoggedIn");
+
+  useEffect(() => {
+    // Check if user is logged in
+    if (!isLoggedIn) {
+      router("/");
+    }
+  }, [router, isLoggedIn]);
+
+  const handleLogout = () => {
+    // Clear isLoggedIn from localStorage
+    localStorage.removeItem("isLoggedIn");
+    // Navigate to the login page
+    router('/');
+  };
   return (
     <>
       <div className="home-page-container">
@@ -78,6 +95,7 @@ const HomePage = () => {
                         />
                       </div>
                     </div>
+                    <button onClick={handleLogout}>Logout</button>
                   </div>
                 </div>
               </div>
