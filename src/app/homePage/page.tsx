@@ -3,6 +3,7 @@ import React, { useEffect } from 'react'
 import Head from 'next/head'
 import './HomePage.css'
 import { useRouter } from 'next/navigation';
+import Link from 'next/link'
 
 const HomePage = () => {
   const router = useRouter();
@@ -51,14 +52,14 @@ const HomePage = () => {
                 <div className="home-page-frame208">
                   <div className="home-page-menu">
                     <div className="home-page-item">
-                      <span className="home-page-text Bodyb4Regular">
+                      <Link href="/homePage" className="home-page-text Bodyb4Regular">
                         <span>Home</span>
-                      </span>
+                      </Link>
                     </div>
                     <div className="home-page-item1">
-                      <span className="home-page-text002 Bodyb4Regular">
+                      <Link href="/blog" className="home-page-text002 Bodyb4Regular">
                         <span>Blog</span>
-                      </span>
+                      </Link>
                     </div>
                     <div className="home-page-item2">
                       <span className="home-page-text004 Bodyb4Regular">
