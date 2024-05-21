@@ -1,4 +1,3 @@
-"use client";
 import React, { useEffect } from 'react'
 import Head from 'next/head'
 import './HomePage.css'
@@ -11,7 +10,7 @@ const HomePage = () => {
   useEffect(() => {
     // Check if user is logged in
     if (!isLoggedIn) {
-      router.push("/");
+      router("/");
     }
   }, [router, isLoggedIn]);
 
@@ -19,7 +18,7 @@ const HomePage = () => {
     // Clear isLoggedIn from localStorage
     localStorage.removeItem("isLoggedIn");
     // Navigate to the login page
-    router.push('/');
+    router('/');
   };
   return (
     <>
