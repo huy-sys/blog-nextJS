@@ -2,8 +2,10 @@
 import React from "react";
 import Head from "next/head";
 import Link from "next/link";
+import { posts } from '../../lib/posts';
 
-const BlogListing = (props) => {
+
+const BlogListing = () => {
   return (
     <>
       <div className="blog-listing-container">
@@ -487,6 +489,15 @@ const BlogListing = (props) => {
                       </div>
                     </div>
                   </div>
+                  <ul>
+                    {posts.map(post => (
+                      <li key={post.id}>
+                        <Link href={`/blog/${post.id}`}>
+                          <span>{post.title}</span>
+                        </Link>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
                 <button className="blog-listing-abutton">
                   <span className="blog-listing-text098 Bodyb4Medium">
@@ -2233,5 +2244,6 @@ const BlogListing = (props) => {
     </>
   );
 };
+
 
 export default BlogListing;
