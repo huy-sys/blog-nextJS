@@ -1,0 +1,23 @@
+.headerCreateCoontainer {
+    display: flex;
+    justify-content: space-between;
+    width: 80%;
+    margin: 20px 0;
+}
+.createContainer {
+    height: 80vh;
+    margin: 0 20px;
+}
+.todoInput {
+    margin: 10px 0;
+    width: 80%;
+}
+.inputName {
+    width: 20%;
+}
+.summitBtn {
+    background-color: coral;
+    padding: 10px;
+    color: white;
+    border-radius: 10px;
+}

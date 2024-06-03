@@ -1,11 +1,20 @@
 "use client";
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Head from "next/head";
 import Link from "next/link";
-import { posts } from '../../lib/posts';
+import { Post, posts } from '../../lib/posts';
+import PostItem from "../../components/PostItem";
 
 
 const BlogListing = () => {
+  const [todos, setTodos] = useState<Post[]>(() => {
+    const savedTodos = localStorage.getItem('postList');
+    return savedTodos ? JSON.parse(savedTodos) : posts;
+  });
+  useEffect(() => {
+    localStorage.setItem('postList', JSON.stringify(todos));
+  }, [todos]);
+
   return (
     <>
       <div className="blog-listing-container">
@@ -53,9 +62,9 @@ const BlogListing = () => {
                         </Link>
                       </div>
                       <div className="blog-listing-item2">
-                        <span className="blog-listing-text004 Bodyb4Regular">
-                          <span>Single Post</span>
-                        </span>
+                        <Link href='/write' className="blog-listing-text004 Bodyb4Regular">
+                          <span>Create Post</span>
+                        </Link>
                       </div>
                       <div className="blog-listing-item3">
                         <span className="blog-listing-text006 Bodyb4Regular">
@@ -151,353 +160,10 @@ const BlogListing = () => {
               <div className="blog-listing-opostlayout">
                 <div className="blog-listing-content04">
                   <div className="blog-listing-row">
-                    <div className="blog-listing-mpostcardgrid">
-                      <img
-                        src="/rectangle382141-lgea-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle38"
-                      />
-                      <div className="blog-listing-content05">
-                        <div className="blog-listing-heading01">
-                          <div className="blog-listing-abadge01">
-                            <span className="blog-listing-text026 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text028 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info01">
-                          <div className="blog-listing-aauthor01">
-                            <img
-                              src="/imagei2141-omwi-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image01"
-                            />
-                            <span className="blog-listing-text030 Bodyb4Medium">
-                              <span>Tracey Wilson</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text032 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="blog-listing-mpostcardgrid1">
-                      <img
-                        src="/rectangle382141-ijtm-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle381"
-                      />
-                      <div className="blog-listing-content06">
-                        <div className="blog-listing-heading02">
-                          <div className="blog-listing-abadge02">
-                            <span className="blog-listing-text034 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text036 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info02">
-                          <div className="blog-listing-aauthor02">
-                            <img
-                              src="/imagei2141-juf6-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image02"
-                            />
-                            <span className="blog-listing-text038 Bodyb4Medium">
-                              <span>Jason Francisco</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text040 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="blog-listing-mpostcardgrid2">
-                      <img
-                        src="/rectangle382141-hym-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle382"
-                      />
-                      <div className="blog-listing-content07">
-                        <div className="blog-listing-heading03">
-                          <div className="blog-listing-abadge03">
-                            <span className="blog-listing-text042 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text044 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info03">
-                          <div className="blog-listing-aauthor03">
-                            <img
-                              src="/imagei2141-ehc2-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image03"
-                            />
-                            <span className="blog-listing-text046 Bodyb4Medium">
-                              <span>Elizabeth Slavin</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text048 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="blog-listing-row1">
-                    <div className="blog-listing-mpostcardgrid3">
-                      <img
-                        src="/rectangle382141-fh8i-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle383"
-                      />
-                      <div className="blog-listing-content08">
-                        <div className="blog-listing-heading04">
-                          <div className="blog-listing-abadge04">
-                            <span className="blog-listing-text050 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text052 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info04">
-                          <div className="blog-listing-aauthor04">
-                            <img
-                              src="/imagei2141-7dtb-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image04"
-                            />
-                            <span className="blog-listing-text054 Bodyb4Medium">
-                              <span>Ernie Smith</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text056 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="blog-listing-mpostcardgrid4">
-                      <img
-                        src="/rectangle382141-v1rf-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle384"
-                      />
-                      <div className="blog-listing-content09">
-                        <div className="blog-listing-heading05">
-                          <div className="blog-listing-abadge05">
-                            <span className="blog-listing-text058 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text060 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info05">
-                          <div className="blog-listing-aauthor05">
-                            <img
-                              src="/imagei2141-n7eo-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image05"
-                            />
-                            <span className="blog-listing-text062 Bodyb4Medium">
-                              <span>Eric Smith</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text064 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="blog-listing-mpostcardgrid5">
-                      <img
-                        src="/rectangle382141-8wl9-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle385"
-                      />
-                      <div className="blog-listing-content10">
-                        <div className="blog-listing-heading06">
-                          <div className="blog-listing-abadge06">
-                            <span className="blog-listing-text066 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text068 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info06">
-                          <div className="blog-listing-aauthor06">
-                            <img
-                              src="/imagei2141-n5x-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image06"
-                            />
-                            <span className="blog-listing-text070 Bodyb4Medium">
-                              <span>Tracey Wilson</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text072 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <div className="blog-listing-row2">
-                    <div className="blog-listing-mpostcardgrid6">
-                      <img
-                        src="/rectangle382141-13l-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle386"
-                      />
-                      <div className="blog-listing-content11">
-                        <div className="blog-listing-heading07">
-                          <div className="blog-listing-abadge07">
-                            <span className="blog-listing-text074 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text076 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info07">
-                          <div className="blog-listing-aauthor07">
-                            <img
-                              src="/imagei2141-nlal-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image07"
-                            />
-                            <span className="blog-listing-text078 Bodyb4Medium">
-                              <span>Jason Francisco</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text080 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="blog-listing-mpostcardgrid7">
-                      <img
-                        src="/rectangle382141-pjxo-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle387"
-                      />
-                      <div className="blog-listing-content12">
-                        <div className="blog-listing-heading08">
-                          <div className="blog-listing-abadge08">
-                            <span className="blog-listing-text082 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text084 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info08">
-                          <div className="blog-listing-aauthor08">
-                            <img
-                              src="/imagei2141-7yod-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image08"
-                            />
-                            <span className="blog-listing-text086 Bodyb4Medium">
-                              <span>Elizabeth Slavin</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text088 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="blog-listing-mpostcardgrid8">
-                      <img
-                        src="/rectangle382141-geh8-300h.png"
-                        alt="Rectangle382141"
-                        className="blog-listing-rectangle388"
-                      />
-                      <div className="blog-listing-content13">
-                        <div className="blog-listing-heading09">
-                          <div className="blog-listing-abadge09">
-                            <span className="blog-listing-text090 Bodyb5Medium">
-                              <span>Technology</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text092 Headingh3Semibold">
-                            <span>
-                              The Impact of Technology on the Workplace: How
-                              Technology is Changing
-                            </span>
-                          </span>
-                        </div>
-                        <div className="blog-listing-short-info09">
-                          <div className="blog-listing-aauthor09">
-                            <img
-                              src="/imagei2141-a8op-200h.png"
-                              alt="ImageI2141"
-                              className="blog-listing-image09"
-                            />
-                            <span className="blog-listing-text094 Bodyb4Medium">
-                              <span>Ernie Smith</span>
-                            </span>
-                          </div>
-                          <span className="blog-listing-text096 Bodyb4Regular">
-                            <span>August 20, 2022</span>
-                          </span>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                  <ul>
-                    {posts.map(post => (
-                      <li key={post.id}>
-                        <Link href={`/blog/${post.id}`}>
-                          <span>{post.title}</span>
-                        </Link>
-                      </li>
+                    {todos.map(post => (
+                      <PostItem key={post.id} post={post} />
                     ))}
-                  </ul>
+                  </div>
                 </div>
                 <button className="blog-listing-abutton">
                   <span className="blog-listing-text098 Bodyb4Medium">
@@ -1037,11 +703,13 @@ const BlogListing = () => {
             display: flex;
             align-items: flex-start;
             flex-direction: column;
+            width: 1216px;
           }
           .blog-listing-row {
             gap: 20px;
             display: flex;
             align-items: flex-start;
+            flex-wrap: wrap;
           }
           .blog-listing-mpostcardgrid {
             gap: 16px;
