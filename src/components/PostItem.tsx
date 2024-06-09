@@ -9,10 +9,11 @@ interface PostItemProps {
 const PostItem = ({ post }: PostItemProps) => {
     return (
         <>
-            <div className="flex flex-col justify-center p-4 bg-white rounded-xl border border-gray-200 border-solid max-w-[392px]">
+            <div className="flex flex-col grow justify-center p-4 w-full bg-white rounded-xl border border-gray-200 border-solid max-md:mt-5">
                 <img
                     loading="lazy"
                     srcSet={post.imagePost}
+                    alt="Image post"
                     className="w-full aspect-[1.49]"
                 />
                 <div className="flex flex-col p-2 mt-4">
@@ -30,6 +31,7 @@ const PostItem = ({ post }: PostItemProps) => {
                         <div className="flex gap-3 font-medium">
                             <img
                                 loading="lazy"
+                                alt="Image Author"
                                 srcSet={post.imageAuthorSrc}
                                 className="shrink-0 w-9 aspect-square"
                             />
