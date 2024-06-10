@@ -37,14 +37,33 @@ const PostCreate = () => {
     //     }
     // }, []);
 
-    useEffect(() => {
-        localStorage.setItem('postList', JSON.stringify(posts));
-    }, [posts]);
+    const getNextIdNumber = (): number => {
+        return posts.length > 0 ? Math.max(...posts.map(post => post.id)) + 1 : 1;
+    };
+    const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, imageType: string) => {
+        const file = e.target.files?.[0];
+        if (file) {
+            const reader = new FileReader();
+            reader.onloadend = () => {
+                if (imageType === 'imagePost') {
+                    setImagePost(reader.result as string);
+                } else {
+                    setImageAuthorSrc(reader.result as string);
+                }
+            };
+            reader.readAsDataURL(file);
+        }
+    };
+
+    const updateTodos = (newPosts: Post[]) => {
+        setPosts(newPosts);
+        localStorage.setItem('postList', JSON.stringify(newPosts));
+    };
 
     const handleAddTodo = () => {
         if (title.trim() !== '') {
             const newTodo: Post = {
-                id: counter.toString(),
+                id: getNextIdNumber().toString(),
                 title: title.trim(),
                 content: content,
                 tag: tag,
@@ -53,7 +72,7 @@ const PostCreate = () => {
                 imageAuthorSrc: imageAuthorSrc,
                 imagePost: imagePost,
             };
-            setPosts(prevPosts => [...prevPosts, newTodo]);
+            updateTodos([...posts, newTodo]);
             setTitle('');
             setContent('');
             setTag('');
@@ -66,13 +85,6 @@ const PostCreate = () => {
                 setAlertMessage('Todo added successfully!')
             }, 100);
         }
-    };
-
-    const handleDeleteTodo = (id: string) => {
-        setPosts(prevPosts => prevPosts.filter(todo => todo.id !== id));
-        setTimeout(() => {
-            setAlertMessage('Todo removed successfully!')
-        }, 100);
     };
 
     // Khi bắt đầu chỉnh sửa
@@ -140,6 +152,9 @@ const PostCreate = () => {
                     onChange={(e) => setImageAuthorSrc(e.target.value)}
                 />
 
+                <input type="file" onChange={(e) => handleImageUpload(e, 'imageAuthorSrc')} />
+                {imageAuthorSrc && <img src={imageAuthorSrc} alt="Todo" style={{ width: '100px', height: '100px' }} />}
+
                 <div className={style.inputName}>Image Post</div>
                 <input
                     type="text"
@@ -147,6 +162,8 @@ const PostCreate = () => {
                     value={imagePost}
                     onChange={(e) => setImagePost(e.target.value)}
                 />
+                <input type="file" onChange={(e) => handleImageUpload(e, 'imagePost')} />
+                {imagePost && <img src={imagePost} alt="Todo" style={{ width: '100px', height: '100px' }} />}
             </div>
         </div>
     );

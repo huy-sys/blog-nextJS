@@ -17,9 +17,6 @@ function useTodo() {
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [counter, setCounter] = useState<number>(1);
 
-    useEffect(() => {
-        localStorage.setItem('postList', JSON.stringify(todos));
-    }, [todos]);
     // Nếu dependencies thay đổi thì sẽ chạy useEffect để chạy hàm bên trong
     useEffect(() => {
         if (alertMessage !== '') {
@@ -29,19 +26,23 @@ function useTodo() {
     }, [alertMessage])
 
     useEffect(() => {
-        const storedTodos = localStorage.getItem('todos');
+        const storedTodos = localStorage.getItem('postList');
         if (storedTodos) {
             setTodos(JSON.parse(storedTodos));
         }
     }, []);
 
-    useEffect(() => {
-        localStorage.setItem('todos', JSON.stringify(todos));
-    }, [todos]);
+    const updateTodos = (newTodos: Post[]) => {
+        setTodos(newTodos);
+        localStorage.setItem('postList', JSON.stringify(newTodos));
+    };
 
     // const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     //     setInputText(e.target.value);
     // };
+    const getNextIdNumber = (): number => {
+        return todos.length > 0 ? Math.max(...todos.map(todo => todo.idNumber)) + 1 : 1;
+    };
 
     const handleAddTodo = () => {
         if (title.trim() !== '') {
@@ -55,7 +56,7 @@ function useTodo() {
                 imageAuthorSrc: imageAuthorSrc,
                 imagePost: imagePost,
             };
-            setTodos(prevTodos => [...prevTodos, newTodo]);
+            updateTodos([...todos, newTodo]);
             setTitle('');
             setContent('');
             setTag('');
@@ -71,7 +72,8 @@ function useTodo() {
     };
 
     const handleDeleteTodo = (id: string) => {
-        setTodos(prevTodos => prevTodos.filter(todo => todo.id !== id));
+        const newTodos = todos.filter((todo) => todo.id !== id);
+        updateTodos(newTodos);
         setTimeout(() => {
             setAlertMessage('Todo removed successfully!')
         }, 100);
@@ -79,12 +81,10 @@ function useTodo() {
 
     // Khi bắt đầu chỉnh sửa
     const handleEditTodo = (id: string, newText: string) => {
-        setTodos(prevTodos =>
-            prevTodos.map(todo =>
-                // Nếu trùng với id đang chỉnh sửa thì thay text hiện tại bằng text mới không giữ nguyên todo
-                todo.id === id ? { ...todo, text: newText } : todo
-            )
+        const newTodos = todos.map((todo) =>
+            todo.id === id ? { ...todo, text: newText } : todo
         );
+        updateTodos(newTodos);
     };
 
     console.log('todoAF', todos)
