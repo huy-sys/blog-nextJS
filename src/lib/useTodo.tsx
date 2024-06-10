@@ -1,8 +1,12 @@
 import { useEffect, useState } from "react";
-import { Post } from "./posts";
+import { Post, posts } from "./posts";
 
 function useTodo() {
-    const [todos, setTodos] = useState<Post[]>([]);
+    const [todos, setTodos] = useState<Post[]>(() => {
+        const savedTodos = localStorage.getItem('postList');
+        return savedTodos ? JSON.parse(savedTodos) : posts;
+    });
+
     const [title, setTitle] = useState<string>('');
     const [content, setContent] = useState<string>('');
     const [tag, setTag] = useState<string>('');
@@ -13,6 +17,9 @@ function useTodo() {
     const [alertMessage, setAlertMessage] = useState<string>('')
     const [counter, setCounter] = useState<number>(1);
 
+    useEffect(() => {
+        localStorage.setItem('postList', JSON.stringify(todos));
+    }, [todos]);
     // Nếu dependencies thay đổi thì sẽ chạy useEffect để chạy hàm bên trong
     useEffect(() => {
         if (alertMessage !== '') {

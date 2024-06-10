@@ -5,15 +5,16 @@
     width: 80%;
     margin: 20px 10% 0 10%;
     font-weight: 500;
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(97, 146, 231);
     padding: 20px;
     border-radius: 12px 12px 0 0;
+    color: white;
 }
 .createContainer {
     margin: 0 10% 20px 10%;
     padding: 20px;
     width: 80%;
-    background-color: aliceblue;
+    background-color: rgb(84, 107, 130);
     border-radius: 0 0 12px 12px;
 }
 .todoInput {
@@ -23,6 +24,7 @@
 .inputName {
     width: 20%;
     margin: 10px 0;
+    color: white;
 }
 .summitBtn {
     background-color: coral;

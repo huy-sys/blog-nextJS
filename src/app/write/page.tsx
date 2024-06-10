@@ -86,42 +86,10 @@ const PostCreate = () => {
     };
 
     return (
-        <>
-            <div className="flex justify-center items-center px-16 py-8 w-full max-md:px-5 max-md:max-w-full bg-gray-50">
-                <div className="flex gap-5 justify-between max-w-full w-[1218px] max-md:flex-wrap">
-                    <img
-                        loading="lazy"
-                        src="https://cdn.builder.io/api/v1/image/assets/TEMP/ccc8343a891916293e0885ec85dd6080fad46cfcaddfab48436f5f7bbb36ff2e?apiKey=33a64a0f93c2493da0447121a699bf7a&"
-                        className="shrink-0 max-w-full aspect-[4.35] w-[158px]"
-                    />
-                    <div className="flex gap-5 justify-between max-md:flex-wrap max-md:max-w-full">
-                        <div className="flex justify-center items-center px-16 my-auto text-base leading-6 text-zinc-700 max-md:px-5 max-md:max-w-full">
-                            <div className="flex gap-5 justify-between max-md:flex-wrap">
-                                <Link href={'/blog'} className="justify-center whitespace-nowrap">Blog</Link>
-                                <Link href={'/write'} className="justify-center whitespace-nowrap">Create Post</Link>
-                            </div>
-                        </div>
-                        <div className="flex gap-5 justify-between text-sm leading-5 whitespace-nowrap text-zinc-400">
-                            <div className="flex gap-3 py-2 pr-2 pl-4 rounded-md bg-zinc-100">
-                                <div className="flex-1">Search</div>
-                                <img
-                                    loading="lazy"
-                                    src="https://cdn.builder.io/api/v1/image/assets/TEMP/8e1024d9c520cd635a66c84da1cba18cde0a18948f7d97bef90c8a00935a7be7?apiKey=33a64a0f93c2493da0447121a699bf7a&"
-                                    className="shrink-0 my-auto w-4 aspect-square"
-                                />
-                            </div>
-                            <img
-                                loading="lazy"
-                                src="https://cdn.builder.io/api/v1/image/assets/TEMP/dfa914ef95ca7392d07e29c2f0929d6da491d66993d1f420e6cd421ea7b85294?apiKey=33a64a0f93c2493da0447121a699bf7a&"
-                                className="shrink-0 my-auto w-12 aspect-[1.72]"
-                            />
-                        </div>
-                    </div>
-                </div>
-            </div>
+        <div className="bg-slate-50 py-10">
             <div className={style.headerCreateCoontainer}>
-                <h1>Todo List</h1>
-                <button className={style.summitBtn} onClick={handleAddTodo}>Add Todo</button>
+                <h1>Create a new post</h1>
+                <button className={style.summitBtn} onClick={handleAddTodo}>Create</button>
             </div>
             <div className={style.createContainer}>
                 <div className={style.inputName}>Title</div>
@@ -180,8 +148,7 @@ const PostCreate = () => {
                     onChange={(e) => setImagePost(e.target.value)}
                 />
             </div>
-            <FooterPage />
-        </>
+        </div>
     );
 }
 
