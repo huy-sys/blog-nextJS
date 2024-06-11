@@ -49,7 +49,7 @@ const NavbarHeader = () => {
                     </div>
 
                     {/* Mobile button */}
-                    <div className="md:hidden lg:hidden sm:flex items-center">
+                    <div className="lg:hidden md:hidden sm:flex items-center">
                         <button onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)} className="mobile-menu-button">
                             <svg className="w-6 h-6 text-gray-700" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h16m-7 6h7" />
@@ -60,9 +60,9 @@ const NavbarHeader = () => {
             </div>
 
             {/* Mobile Menu */}
-            <div className={`mobile-menu ${isMobileMenuOpen ? '' : 'lg:hidden md:hidden'} `}>
+            <div className={`${isMobileMenuOpen ? 'sm:block md:hidden lg:hidden' : 'hidden'} `}>
                 <Link href={'/blog'} className="block py-2 px-4 text-sm hover:bg-gray-200">Home</Link>
-                <Link href={'/write'} className="block py-2 px-4 text-sm hover:bg-gray-200">About</Link>
+                <Link href={'/write'} className="block py-2 px-4 text-sm hover:bg-gray-200">Create Post</Link>
                 <button onClick={handleLogout} className="block py-2 px-4 text-sm hover:bg-gray-200">Logout</button>
             </div>
         </nav>
